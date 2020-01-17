@@ -88,32 +88,34 @@ public class JunitTest {
 	 * @param n
 	 * @return
 	 */
-	public int[] fixXY(int[] arr, int x, int y, int n) {
-		if (arr == null || arr.length == 0)
-			return null;
-		ArrayList<Integer> xin = new ArrayList<Integer>(1);
-		ArrayList<Integer> yin = new ArrayList<Integer>(1);
-		for (int i = 0; i < n; i++) {
-			if (arr[i] == x)
-				xin.add(i);
-			if (arr[i] == y)
-				yin.add(i);
-			if (xin.get(i) == n - 1)
+		public int[] fixXY(int[] arr, int x, int y, int n) {
+			if (arr == null || arr.length == 0)
 				return null;
-			if (xin.get(i) == xin.get(i - 1))
+			if(arr[n-1]==x)
 				return null;
-		}
-		if (xin.size() != yin.size())
-			return null;
-		for (int i = 0; i < yin.size(); i++) {
-			int temp;
-			temp = arr[yin.get(i)];
-			arr[yin.get(i)] = arr[xin.get(i) + 1];
-			arr[xin.get(i) + 1] = temp;
-		}
+			ArrayList<Integer> xin = new ArrayList<Integer>(1);
+			ArrayList<Integer> yin = new ArrayList<Integer>(1);
+			for (int i = 0; i < n; i++) {
+				if (arr[i] == x)
+				{
+					if(  i!=0 && arr[i-1]==x)
+						return null;
+					xin.add(i);
+				}
+				if (arr[i] == y)
+					yin.add(i);
+			}
+			if (xin.size() != yin.size())
+				return null;
+			for (int i = 0; i < yin.size(); i++) {
+				int temp;
+				temp = arr[yin.get(i)];
+				arr[yin.get(i)] = arr[xin.get(i) + 1];
+				arr[xin.get(i) + 1] = temp;
+			}
 
-		return arr;
-	}
+			return arr;
+		}
 
 	/**
 	 * method to find index of array by which array could be divided into 2
@@ -143,4 +145,4 @@ public class JunitTest {
 		}
 		return splitin;
 	}
-}
+	}
