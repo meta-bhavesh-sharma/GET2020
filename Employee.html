@@ -11,17 +11,11 @@
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
             var cpassword = document.getElementById("cpassword").value;
-            var letters1 = /^[a-zA-Z]+[a-zA-Z]+| [a-zA-Z]+$/;
+            var letters1 = /^[a-zA-Z]+ [a-zA-Z]+$/;
             var letters2 = /^\d{8}\d*$/;
             var letters3 = /^\w+[.]\w+[@]\w{3}\w*\w+|.[A-Za-z]+$/;
             if (!name.match(letters1)) {
-                alert("Enter only charecters in name and enter your first name and last name");
-            } else if (contact.length < 8) {
-                alert("please fill mobile number it is compulsory");
-            } else if (!contact.match(letters2)) {
-                alert("Enter valid digits");
-            } else if (!contact.match(letters2)) {
-                alert("Enter valid digits");
+                alert("Enter onmly characters in name and enter only first name and last name");
             } else if (!email.match(letters3)) {
                 alert("Enter valid email");
             } else if (!password.match(/[a-z]/g) && password.match(
@@ -31,27 +25,47 @@
                 alert("Enter valid password please follow these conditions password length minimum 8,atleast one uppercase,lowercase and digit is necessery");
             } else if (password != cpassword || password == "" || cpassword == "") {
                 alert("password and confirm password should be same and can't be empty");
+            } else if (!contact.match(letters2)) {
+                alert("Enter valid contact number ");
             } else {
                 document.getElementById("Rid").value = 1;
-                document.getElementById("empregester").innerHTML = "<h2>Congratulation " + name + "You have successfully registered and your registration id is 1 please regester your veichle<h2>";
+                document.getElementById("empregester").innerHTML = "<h1> " + name + "You have successfully registered and your registration id is 1 please regester your veichle<h1>";
             }
 
 
         }
 
-        function vichle_regestraion() {
+        function purchase() {
+            var vnum = document.getElementById("vnum").value;
             var name = document.getElementById("vname").value;
             var rid = document.getElementById("Rid").value;
             var Currency = document.getElementById("Currency").value;
-            if (Currency == "1") {
-                alert("Select currency");
-            } else if (name == "") {
-                alert("name required");
-            } else if (rid == "") {
-                alert("please fill the regestration form first");
-            } else {
-                document.getElementById("veichle").innerHTML = "<h1> Now we got your veichle details now please select a plan<h1>";
+            var c1 = document.getElementById("check1");
+            var c2 = document.getElementById("check2");
+            var c3 = document.getElementById("check3");
+            var count = 0;
+            if (c1.checked == true) {
+                count++;
             }
+            if (c2.checked == true) {
+                count++;
+            }
+            if (c3.checked == true) {
+                count++;
+            }
+            if (rid == "") {
+                alert("please fill the regestration form first");
+            } else if (name == "") {
+                alert("veichle name required");
+            } else if (count == 0) {
+                alert("Select veichle type");
+            } else if (vnum == "") {
+                alert("enter veichle number");
+            } else if (Currency == "1") {
+                alert("Select currency");
+            }
+            document.getElementById("veichle").innerHTML = "<h1>Congratulation You have successfully purchased parking pass now enjoy our parking facilities <h1>";
+            document.getElementById("veichle").innerHTML = "<h1>         Thank you        <h1>";
         }
 
         function validate() {
@@ -99,10 +113,12 @@
     </script>
     <style>
         #Currency {
+            margin: 10px;
+            padding: 10px;
             font-size: 20px;
             text-align: center;
             width: 3cm;
-            height: 1cm;
+            height: 1.5cm;
             background-color: royalblue;
         }
         
@@ -133,12 +149,13 @@
             margin: 20px;
             padding: 20px;
             text-align: center;
-            background-color: lavender;
+            background-color: black;
             font-family: verdana;
             font-size: 10px;
         }
         
         form input[type="text"] {
+            background-color: darkgrey;
             border: transparent;
             margin: 15px;
             padding: 15px;
@@ -146,7 +163,6 @@
             font-size: 20px;
             height: .2cm;
             width: 7cm;
-            border: 2px solid red;
             border-radius: 12cm;
         }
         
@@ -167,7 +183,6 @@
             font-size: 20px;
             height: .2cm;
             width: 7cm;
-            border: 2px solid red;
             border-radius: 12cm;
         }
         
@@ -177,17 +192,14 @@
             text-align: center;
             width: 20px;
             height: 20px;
-            border: 2px solid red;
             border-radius: 12cm;
         }
         
         form textarea {
-            border-color: red;
             text-align: center;
             font-size: 20px;
             height: 1cm;
             width: 5cm;
-            border: 2px solid red;
             border-radius: 12cm;
         }
         
@@ -228,7 +240,7 @@
     <form id=empregester>
         <h2>Employee Registration form</h2>
         <br><input id="empname" type="text" placeholder="Full Name" required></input><br>
-        <div style="font-size:20px;">Gender
+        <div style="font-size:20px;color: blueviolet;">Gender
             <label><input  type="radio" placeholder="Make" name="Gender"></input>Male</label>
             <label><input  type="radio" placeholder="Make" name="Gender" ></input>Female</label><br>
         </div>
@@ -240,17 +252,17 @@
     </form>
     <form id=veichle>
         <h2>Employee Registration vichle form</h2>
-        <input id="Rid" type="text" placeholder="Registration id"></input><br>
+        <input id="Rid" type="text" placeholder="Registration id" readonly></input><br>
         <br><input id="vname" type="text" placeholder="Veichle Name" required></input><br>
-        <div style="font-size: 20px;">
+        <div style="font-size: 20px;color:blueviolet">
             Type<label><input id="check1" type="checkbox"  name="Type"></input>Cycle</label>
             <label><input id="check2" type="checkbox"  name="Type"></input>Moter Bike</label>
             <label><input id="check3" type="checkbox"  name="Type"></input>Four Wheeler<br></label>
         </div>
-        <input type="text" placeholder="vichle Number"></input><br>
+        <input id="vnum" type="text" placeholder="vichle Number"></input><br>
         <textarea placeholder="Identifcation"></textarea><br>
         <h2>Purchase Pass</h2>
-        <div style="font-size: 20px;">
+        <div style="font-size: 20px;color: blueviolet;">
             Chose Currency<br>
         </div>
         <select id="Currency" onchange="validate();">
@@ -259,13 +271,10 @@
                 <option value="3">USD</option>
                 <option value="4">YEN</option>
             </select><br>
-        <input id="forword" type="button" value="Go" onclick="vichle_regestraion();"></input><br>
-    </form>
-    <form>
-        <input id="currency" type="text" placeholder="currency"></input>
-        <input id="button1" type="button" value="Daily" onclick="purchase();"></input>
-        <input id="button2" type="button" value="Monthly" onclick="purchase();"></input>
-        <input id="button3" type="button" value="Weekly" onclick="purchase();"></input>
+        <input id="currency" type="text" placeholder="currency" readonly>
+        <input id="button1" type="button" value="Daily" onclick="purchase();">
+        <input id="button2" type="button" value="Monthly" onclick="purchase();">
+        <input id="button3" type="button" value="Weekly" onclick="purchase();">
     </form>
 
 </body>
