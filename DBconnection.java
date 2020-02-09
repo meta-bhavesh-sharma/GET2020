@@ -11,35 +11,26 @@ public class DBconnection {
 	String user="root";
 	String password="root";
 	
-	public ArrayList<Book> select()
+	public ArrayList<Fruit> select()
 		{
-			ArrayList<Book> book= new ArrayList<Book>();
+			ArrayList<Fruit> items= new ArrayList<Fruit>();
 			try
 			{
-				int id;
-				String title;
-				String writer;
-				String publisher;
-				int publishYear;
+				String name;
+				int quantity;
 				Class.forName(pcg);
 				Connection conn = DriverManager.getConnection(path,user,password);
 				Statement stmt=conn.createStatement();
-				ResultSet rs=stmt.executeQuery("Select*from book;");
+				ResultSet rs=stmt.executeQuery("Select*from items;");
 				
 				while(rs.next())
 				{
-					id=rs.getInt(1);
-					title=rs.getString(2);
-					writer=rs.getString(3);
-					publisher=rs.getString(4);
-					publishYear=rs.getInt(5);
-					Book b=new Book();
-					b.setId(id);
-					b.setTitle(title);
-					b.setWriter(writer);
-					b.setPublisher(publisher);
-					b.setPublishYear(publishYear);
-					book.add(b);
+					Fruit f=new Fruit();
+					name=rs.getString(1);
+					quantity=rs.getInt(2);
+					f.setName(name);
+					f.setQuantity(quantity);
+					items.add(f);
 				}
 				conn.close();
 			}
@@ -47,34 +38,27 @@ public class DBconnection {
 			{
 				e.getMessage();
 			}
-			return book;
+			return items;
 		}
-		public Book select(String titleName)
+		public ArrayList<Fruit> select(String fruitName)
 		{
-			Book b=new Book();
+			ArrayList<Fruit> items= new ArrayList<Fruit>();
 			try
 			{
-				int id;
-				String title;
-				String writer;
-				String publisher;
-				int publishYear;
+				String name;
+				int quantity;
 				Class.forName(pcg);
 				Connection conn = DriverManager.getConnection(path,user,password);
 				Statement stmt=conn.createStatement();
-				ResultSet rs=stmt.executeQuery("Select*from book where title='"+titleName+"';");
+				ResultSet rs=stmt.executeQuery("Select*from items where name='"+fruitName+"';");
 				while(rs.next())
 				{
-					id=rs.getInt(1);
-					title=rs.getString(2);
-					writer=rs.getString(3);
-					publisher=rs.getString(4);
-					publishYear=rs.getInt(5);
-					b.setId(id);
-					b.setTitle(title);
-					b.setWriter(writer);
-					b.setPublisher(publisher);
-					b.setPublishYear(publishYear);
+					Fruit f=new Fruit();
+					name=rs.getString(1);
+					quantity=rs.getInt(2);
+					f.setName(name);
+					f.setQuantity(quantity);
+					items.add(f);
 				}
 				conn.close();
 		
@@ -83,17 +67,17 @@ public class DBconnection {
 			{
 				e.getMessage();
 			}
-			return b;
+			return items;
 		}
-		public int delete(int id)
+		public boolean delete(String fruitName)
 		{
-			int x=0;
+			boolean x=false;
 			try
 			{
 				Class.forName(pcg);
 				Connection conn = DriverManager.getConnection(path,user,password);
 				Statement stmt=conn.createStatement();
-				x=stmt.executeUpdate("delete from book where id="+id+";");
+				x=stmt.execute("delete*from items where name="+fruitName+";");
 				conn.close();
 			}
 			catch(Exception e)
@@ -111,7 +95,7 @@ public class DBconnection {
 				Class.forName(pcg);
 				Connection conn = DriverManager.getConnection(path,user,password);
 				Statement stmt=conn.createStatement();
-				x=stmt.executeUpdate(" delete from book ;");
+				x=stmt.executeUpdate(" delete from items ;");
 				conn.close();
 			}
 			catch(Exception e)
@@ -121,7 +105,7 @@ public class DBconnection {
 			}
 			return x;
 		}
-		public int update(Book b)
+		public int update(String fruitName ,int quantity)
 		{
 			int x=0;
 			try
@@ -129,7 +113,7 @@ public class DBconnection {
 				Class.forName(pcg);
 				Connection conn = DriverManager.getConnection(path,user,password);
 				Statement stmt=conn.createStatement();
-				x=stmt.executeUpdate("update book set writer='"+b.getWriter()+"',publisher='"+b.getPublisher()+"' where title='"+b.getTitle()+"' and publish_Year='"+b.getPublishYear()+"';");
+				x=stmt.executeUpdate("update items set quantity="+quantity+" where name='"+fruitName+"';");
 				conn.close();
 			}
 			catch(Exception e)
@@ -138,7 +122,7 @@ public class DBconnection {
 			}
 			return x;
 		}
-		public int add(Book b)
+		public int add(String name,int quantity)
 		{
 			int x=0;
 			try
@@ -146,7 +130,7 @@ public class DBconnection {
 				Class.forName(pcg);
 				Connection conn = DriverManager.getConnection(path,user,password);
 				Statement stmt=conn.createStatement();
-				x=stmt.executeUpdate("insert into book values("+b.getId()+",'"+b.getTitle()+"','"+b.getWriter()+"','"+b.getPublisher()+"',"+b.getPublishYear()+");");
+				x=stmt.executeUpdate("insert into items values('"+name+"',"+quantity+");");
 				conn.close();
 			}
 			catch(Exception e)
