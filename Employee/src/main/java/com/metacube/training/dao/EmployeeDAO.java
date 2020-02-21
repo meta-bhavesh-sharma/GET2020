@@ -23,12 +23,6 @@ public interface EmployeeDAO {
 	 */
 	EmployeeCommands getEmpolyee(int id);
 
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	boolean deleteEmployee(int id);
 
 	/**
 	 * 
@@ -43,52 +37,5 @@ public interface EmployeeDAO {
 	 */
 	public List<EmployeeCommands> getAllEmployees(int id);
 
-	/**
-	 * 
-	 * @param loginCommands
-	 * @return
-	 */
-	int match(LoginCommands loginCommands);
-
-	/**
-	 * 
-	 * @param vehicleCommand
-	 * @return
-	 */
-	String addVehicle(VehicleCommand vehicleCommand);
-
-	/**
-	 * 
-	 * @param planCommands
-	 * @return
-	 */
-	boolean purchase(PlanCommand planCommands);
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	int check(int id);
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	String getType(int id);
-
-	/**
-	 * 
-	 * @param fileName
-	 * @param id
-	 */
-	void saveImage(String fileName, int id);
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	String getImage(int id);
+	
 }

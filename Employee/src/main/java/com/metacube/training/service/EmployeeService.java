@@ -37,13 +37,7 @@ public interface EmployeeService {
 	 * @param id
 	 * @return
 	 */
-	boolean deleteEmployee(int id);
 
-	/**
-	 * 
-	 * @param employeeCommands
-	 * @return
-	 */
 	boolean updateEmployee(EmployeeCommands employeeCommands);
 
 	/**

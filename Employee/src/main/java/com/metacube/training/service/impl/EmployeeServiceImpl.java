@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.metacube.training.dao.EmployeeDAO;
+import com.metacube.training.dao.OtherDAO;
 import com.metacube.training.model.commands.EmployeeCommands;
 import com.metacube.training.model.commands.LoginCommands;
 import com.metacube.training.model.commands.PlanCommand;
@@ -22,6 +23,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeDAO employeeDAO;
+	
+	@Autowired
+	private OtherDAO otherDAO;
 
 	@Override
 	public int addEmpolyee(EmployeeCommands employeeCommands) {
@@ -35,10 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.getEmpolyee(id);
 	}
 
-	@Override
-	public boolean deleteEmployee(int id) {
-		return employeeDAO.deleteEmployee(id);
-	}
+
 
 	@Override
 	public boolean updateEmployee(EmployeeCommands employeeCommands) {
@@ -54,23 +55,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public int match(LoginCommands loginCommands) {
-		return employeeDAO.match(loginCommands);
+		return otherDAO.match(loginCommands);
 	}
 
 	public String addVehicle(VehicleCommand vehicleCommand) {
-		return employeeDAO.addVehicle(vehicleCommand);
+		return otherDAO.addVehicle(vehicleCommand);
 	}
 
 	public boolean purchase(PlanCommand planCommands) {
-		return employeeDAO.purchase(planCommands);
+		return otherDAO.purchase(planCommands);
 	}
 
 	public int check(int id) {
-		return employeeDAO.check(id);
+		return otherDAO.check(id);
 	}
 
 	public String getType(int id) {
-		return employeeDAO.getType(id);
+		return otherDAO.getType(id);
 	}
 
 	public String saveImage(MultipartFile imageFile, int id) throws IOException {
@@ -78,11 +79,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		byte[] bytes = imageFile.getBytes();
 		Path path = Paths.get(folder + imageFile.getOriginalFilename());
 		Files.write(path, bytes);
-		employeeDAO.saveImage(imageFile.getOriginalFilename(), id);
+		otherDAO.saveImage(imageFile.getOriginalFilename(), id);
 		return folder + imageFile.getOriginalFilename();
 	}
 
 	public String getImage(int id) {
-		return employeeDAO.getImage(id);
+		return otherDAO.getImage(id);
 	}
 }
