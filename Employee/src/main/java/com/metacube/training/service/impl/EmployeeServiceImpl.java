@@ -12,8 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.metacube.training.dao.EmployeeDAO;
 import com.metacube.training.dao.OtherDAO;
+import com.metacube.training.dao.PlanDAO;
+import com.metacube.training.dao.VehicleDAO;
 import com.metacube.training.model.commands.EmployeeCommands;
 import com.metacube.training.model.commands.LoginCommands;
+import com.metacube.training.model.commands.Plan;
 import com.metacube.training.model.commands.PlanCommand;
 import com.metacube.training.model.commands.VehicleCommand;
 import com.metacube.training.service.EmployeeService;
@@ -26,6 +29,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
 	private OtherDAO otherDAO;
+	
+	@Autowired
+	private VehicleDAO vehicleDAO;
+	
+	@Autowired
+	private PlanDAO planDAO;
 
 	@Override
 	public int addEmpolyee(EmployeeCommands employeeCommands) {
@@ -55,15 +64,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public int match(LoginCommands loginCommands) {
-		return otherDAO.match(loginCommands);
+		return employeeDAO.getId(loginCommands);
 	}
 
 	public String addVehicle(VehicleCommand vehicleCommand) {
-		return otherDAO.addVehicle(vehicleCommand);
+		return vehicleDAO.addVehicle(vehicleCommand);
 	}
 
 	public boolean purchase(PlanCommand planCommands) {
-		return otherDAO.purchase(planCommands);
+		
+		Plan plan=new Plan();
+		plan.setRid(planCommands.getRid());
+		plan.setPeriod(planCommands.getPeriod());
+		plan.setMoney(planCommands.getPrice());
+		
+		return planDAO.purchase(plan);
 	}
 
 	public int check(int id) {
@@ -79,11 +94,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		byte[] bytes = imageFile.getBytes();
 		Path path = Paths.get(folder + imageFile.getOriginalFilename());
 		Files.write(path, bytes);
-		otherDAO.saveImage(imageFile.getOriginalFilename(), id);
+		employeeDAO.saveImage(imageFile.getOriginalFilename(), id);
 		return folder + imageFile.getOriginalFilename();
 	}
 
 	public String getImage(int id) {
-		return otherDAO.getImage(id);
+		return employeeDAO.getImage(id);
 	}
 }

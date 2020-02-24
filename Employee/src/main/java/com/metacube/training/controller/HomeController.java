@@ -124,7 +124,6 @@ public class HomeController {
 		model.addAttribute("planData", new PlanCommand());
 		ModelAndView mav = new ModelAndView("plan");
 		mav.addObject("Rid", employeeId);
-		System.out.println(vehicleType);
 		if ("Cycle".equals(vehicleType)) {
 			dailyPrice = 5;
 			monthlyPrice = 100;
@@ -190,7 +189,6 @@ public class HomeController {
 			ModelAndView mav = new ModelAndView("signup");
 			return mav;
 		} else {
-			System.out.println(employeeCommands.getPassword() + "  " + employeeCommands.getConfirmPassword());
 			if (!employeeCommands.getPassword().equals(employeeCommands.getConfirmPassword())) {
 				ModelAndView mav = new ModelAndView("signup");
 				mav.addObject("MATCHPASS", "Password And Confirm password Are Not Same");

@@ -1,7 +1,10 @@
 package com.metacube.training.model.commands;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 
 public class PlanCommand {
 

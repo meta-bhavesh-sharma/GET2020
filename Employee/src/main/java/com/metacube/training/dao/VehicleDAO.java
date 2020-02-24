@@ -1,11 +1,17 @@
 package com.metacube.training.dao;
 
-import com.metacube.training.model.commands.LoginCommands;
-import com.metacube.training.model.commands.PlanCommand;
 import com.metacube.training.model.commands.VehicleCommand;
 
-public interface OtherDAO {
+public interface VehicleDAO {
 
+	/**
+	 * 
+	 * @param loginCommands
+	 * @return
+	 */
+
+	String addVehicle(VehicleCommand vehicleCommand);
+	
 	/**
 	 * 
 	 * @param loginCommands
@@ -21,5 +27,5 @@ public interface OtherDAO {
 	 * @return
 	 */
 	String getType(int id);
-
+	
 }

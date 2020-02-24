@@ -36,6 +36,27 @@ public interface EmployeeDAO {
 	 * @return
 	 */
 	public List<EmployeeCommands> getAllEmployees(int id);
+	
+	/**
+	 * 
+	 * @param fileName
+	 * @param id
+	 */
+	void saveImage(String fileName, int id);
+
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	 String getImage(int id);
+	 
+	 /**
+	  * 
+	  * @param loginCommands
+	  * @return
+	  */
+	 int getId(LoginCommands loginCommands);
 
 	
 }
