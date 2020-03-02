@@ -1,0 +1,155 @@
+h1 {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    background-color: #e8eaec;
+}
+
+.circle {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #007bff;
+    border-radius: 50%;
+}
+
+.rectangle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border: 1px solid #007bff;
+    ;
+}
+
+#cycle {
+    margin-left: 100px;
+}
+
+#motorcycle {
+    margin-left: 550px;
+}
+
+#fourwheeler {
+    margin-left: 1000px;
+}
+
+#addEmployee {
+    margin: 30px;
+}
+
+#addVehicle {
+    margin: 30px;
+}
+
+#employeeTable {
+    font-size: 30px;
+}
+
+#vehicleTable {
+    font-size: 30px;
+}
+
+#giveFeedback {
+    margin: 30px;
+    ;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 35px;
+    margin-top: 30px;
+    margin-left: 120px;
+    background-color: inherit;
+}
+
+#navbar {
+    padding: 5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #007bff;
+    height: 40px;
+}
+
+#pricing {
+    font-size: 19px;
+}
+
+.showrate {
+    margin-top: 25px;
+}
+
+.showVehicleName {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #007bff;
+    ;
+}
+
+input[typr="radio"] {
+    width: 10px;
+    height: 10px;
+}
+
+input {
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    margin: 20px;
+    border: 0px dotted red;
+    font-size: 20px;
+    height: 40px;
+    shape-outside: none;
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    margin: 20px;
+    height: 40px;
+    width: 120px;
+    border: 0px dotted #007bff;
+    background-color: #007bff;
+    ;
+}
+
+input[type="reset"] {
+    height: 40px;
+    width: 120px;
+    border: 0px dotted #007bff;
+    background-color: #007bff;
+    ;
+}
+
+select {
+    margin-left: 17px;
+    width: 400px;
+    height: 40px;
+    font-size: 20px;
+}
+
+textArea {
+    margin-left: 20px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    width: 400px;
+    height: 50px;
+}
+
+input[type="text"],
+[type="email"],
+[type="password"],
+[type="number"] {
+    width: 400px;
+}
+
+#feedbackTable {
+    font-size: 30px;
+}

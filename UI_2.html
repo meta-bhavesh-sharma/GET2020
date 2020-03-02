@@ -1,0 +1,195 @@
+<html>
+
+<head>
+    <!-- title of the web page-->
+    <title>
+        metacube parking
+    </title>
+    <link rel="stylesheet" type="text/css" href="UI_2.css" media="screen" />
+</head>
+<!-- body of the web page-->
+
+<body>
+    <!-- navigation bar provide many options-->
+    <nav id="navbar">
+
+        <span style="margin-left:0px;"><a  onclick="showEmployee()" href="#addEmployee">Add Employee</a></span>
+        <span><a href="#addVehicle" onclick="showVehicle()">Add Vehicle</a></span>
+        <span><a href="#giveFeedback" onclick="showFeedback()">Give Feedback</a></span>
+        <span><a href="#pricing" onclick="showPricing()">Pricing</a>
+        </span>
+
+    </nav>
+    <!-- showing image of full page of parking-->
+    <img src="carpark.jpg" width="100%" id="imageOfBody" alt="image of parking">
+    <div id="addEmployee">
+        <center>
+            <h1 id="heading of employee registration form">Employee Registration</h1>
+            <form id="addEmployeeForm">
+                <table id="employeeTable">
+                    <tr>
+                        <td>Full Name</td>
+                        <td> <input type="text" id="employeeName" required></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td><label> <input type="radio" name="gender">Male</label><label> <input type="radio" name="gender">Female</label><label> <input type="radio" name="gender">Others</label></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td> <input type="email" id="employeeEmail" required></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td> <input type="password" id="employeePassword" required></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td> <input type="password" id="employeeConfirmPassword" required></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td> <input type="number" id="employeeContact" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Register" onclick="hideEmployee()"></td>
+                        <td><input type="reset"></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </div>
+    <!-- Vehicle details section-->
+    <div id="addVehicle">
+        <center>
+            <!-- heading to vehicle registration form-->
+            <h1>Vehicle Registration</h1>
+            <!--vehicle registration form-->
+            <form id="addVehicleForm">
+                <table id="vehicleTable">
+                    <tr>
+                        <td>Vehicle Company Name</td>
+                        <td> <input type="text" id="vehcileCompanyName" required></td>
+                    </tr>
+                    <tr>
+                        <td>Vehicle Model</td>
+                        <td><input type="text" id="vehicleModel" required></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>
+                            <select id="vehicleType">
+                                <option>Bicycle</option>
+                                <option>MotorCycle</option>
+                                <option>Four Wheeler</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vehicle Number</td>
+                        <td> <input type="text" id="vehicleNumber" required></td>
+                    </tr>
+                    <tr>
+                        <td>Employee Id</td>
+                        <td> <input type="text" id="EmployeeId" required></td>
+                    </tr>
+                    <tr>
+                        <td>identification</td>
+                        <td> <input type="text" id="vehicleIdentification" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Register" onclick="hideVehicle()"></td>
+                        <td><input type="reset"></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </div>
+    <!-- Feedback form  section-->
+
+    <div id="giveFeedback">
+        <center>
+            <!-- heading of Feedback form-->
+            <h1>Feedback Form</h1>
+
+            <!-- Feedback Fom-->
+            <form>
+                <table id="feedbackTable">
+                    <tr>
+                        <td>Email</td>
+                        <td> <input type="email" id="feedbackEmail" required></td>
+                    </tr>
+                    <tr>
+                        <td>Subject</td>
+                        <td><input type="text" id="feedbackSubject" required></td>
+                    </tr>
+                    <tr>
+                        <td>Message </td>
+                        <td>
+                            <textarea id="feedbackMessage" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="send" onclick="hideFeedback()"></td>
+                        <td><input type="reset"></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </div>
+    <!--Parking pass section-->
+    <div id="pricing">
+        <!--heading of pricing -->
+        <center>
+            <h1>Pricing </h1>
+        </center>
+        <div class="rectangle" id="cycle">
+            <center>
+                <div class="showVehicleName">Cycle</div>
+
+                <div class="circle">
+                    <div class="showrate">$100</div>
+                    <div>monthly</div>
+                </div>
+                <div>$5 daily </div>
+                <div>$100 monthly</div>
+                <div>$500 yearly</div>
+                <button onclick="hidePricing()"> Purchase Now</button>
+            </center>
+
+        </div>
+        <div class="rectangle" id="motorcycle">
+            <center>
+                <div class="showVehicleName">MotorCycle</div>
+
+                <div class="circle">
+                    <div class="showrate">$200</div>
+                    <div>monthly</div>
+                </div>
+                <div>$10 daily </div>
+                <div>$200 monthly</div>
+                <div>$1000 yearly</div>
+                <button onclick="hidePricing()"> Purchase Now</button>
+            </center>
+
+        </div>
+
+        <div class="rectangle" id="fourwheeler">
+            <center>
+                <div class="showVehicleName">FourWheeler</div>
+
+                <div class="circle">
+                    <div class="showrate">$500</div>
+                    <div>monthly</div>
+                </div>
+                <div>$25 daily </div>
+                <div>$500 monthly</div>
+                <div>$2500 yearly</div>
+                <button onclick="hidePricing()"> Purchase Now</button>
+            </center>
+
+        </div>
+    </div>
+</body>
+
+</html>
