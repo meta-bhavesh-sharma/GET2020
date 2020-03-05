@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserData implements UserDetails
 {
-	private UserData userData;
 
 	private String username;
 	private String password;
@@ -21,12 +20,14 @@ public class UserData implements UserDetails
 	
 	public UserData(UserCommands userCommands) {
 		this.isActive=userCommands.getActive();
+		System.out.println(isActive);
 		this.username = userCommands.getEmail();
 		this.password = userCommands.getPassword();
+		System.out.println(password);
 		this.authority = Arrays.stream(userCommands.getRole().split(","))
 				.map(SimpleGrantedAuthority::new)
 				.collect(Collectors.toList());
-		
+		System.out.println(this.authority);
 	}
     
 	public UserData( ) {
@@ -37,7 +38,7 @@ public class UserData implements UserDetails
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.authority;
 	}
 
 	@Override
@@ -73,7 +74,7 @@ public class UserData implements UserDetails
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return this.isActive;
+		return true;
 	}
 	
 }

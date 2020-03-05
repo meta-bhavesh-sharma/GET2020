@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,7 +38,16 @@ public class HomeController {
 
 	@GetMapping({ "/", "/home" })
 	public String home(Model model) {
-		vehicleType = null;
+		return "index1";
+	}
+
+	@GetMapping({ "/admin" })
+	public String home1(Model model) {
+		return "adminhome";
+	}
+
+	@GetMapping({ "/user" })
+	public String home2(Model model) {
 		return "home";
 	}
 
@@ -93,12 +103,20 @@ public class HomeController {
 		if (email == null) {
 			response.sendRedirect("login");
 		}
+
+		List<EmployeeCommands> employees = employeeService.getAllEmployees(employeeId);
+		return new ModelAndView("employees", "employees", employees);
+	}
+
+	@GetMapping("/allemployees")
+	public ModelAndView getEmployees() {
+
 		/*
 		 * if(employeeId==0) { ModelAndView mav = new ModelAndView("redirect:/login");
 		 * return mav; }
 		 */
-		List<EmployeeCommands> employees = employeeService.getAllEmployees(employeeId);
-		return new ModelAndView("employees", "employees", employees);
+		List<EmployeeCommands> employees = employeeService.getAllEmployees();
+		return new ModelAndView("allemployees", "employees", employees);
 	}
 
 	@GetMapping("/userlogout")
@@ -277,7 +295,7 @@ public class HomeController {
 	public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile, Model model) throws IOException {
 		model.addAttribute("userData", new EmployeeCommands());
 		empData.setPath(imageFile.getOriginalFilename());
-		String path = employeeService.saveImage(empData,imageFile);
+		String path = employeeService.saveImage(empData, imageFile);
 		model.addAttribute("userData", empData);
 		imagename = path;
 		model.addAttribute("IMAGE", imagename);

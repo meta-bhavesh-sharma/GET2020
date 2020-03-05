@@ -65,6 +65,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@Transactional
 	public List<EmployeeCommands> getAllEmployees(long id) {
+		Optional<EmployeeCommands> opEmp = employeeRepository.findById(id);
+		 return (List<EmployeeCommands>) opEmp.get();
+	}
+	
+	@Override
+	@Transactional
+	public List<EmployeeCommands> getAllEmployees() {
 		return (List<EmployeeCommands>)employeeRepository.findAll();
 	}
 

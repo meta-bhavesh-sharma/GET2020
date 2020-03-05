@@ -48,6 +48,12 @@ public interface EmployeeService {
 
 	/**
 	 * 
+	 * @return
+	 */
+	List<EmployeeCommands> getAllEmployees();
+
+	/**
+	 * 
 	 * @param loginCommands
 	 * @return
 	 */
