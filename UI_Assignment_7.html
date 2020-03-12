@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- title of the web page-->
+    <title>
+        metacube parking
+    </title>
+    <!--css of the web page -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- body of the web page-->
+
+<body>
+
+    <!-- showing image of full page of parking-->
+    <center>
+        <h1>Metacube Parking System</h1>
+
+        <div id="addEmployee">
+
+            <h2 id="headingofemployeeregistration">Employee Registration
+            </h2>
+            <div id="message"></div>
+            <div id="error"></div>
+            <form>
+                <div id="name">
+                    <center>
+                        <input type="text" id="employeeName" placeholder="name" onkeydown="fname(this)">
+                    </center>
+                </div>
+                <div id="gen">
+                    <center>
+                        <label> <input type="radio" name="gender " placeholder="gender " id="gender" onclick="fgender(this) ">Male</label><label> <input type="radio" name="gender " id="gender"  onclick="fgender(this) ">Female</label><label> <input type="radio" name="gender" id="gender"  onclick="fgender(this) ">Others</label>                        </center>
+                </div>
+                <div id="email">
+                    <center>
+                        <input type="email" id="employeeEmail" placeholder="email " onkeydown="femail(this) ">
+                    </center>
+                </div>
+                <div id="password">
+                    <center>
+                        <input type="password" id="employeePassword" placeholder="password " onkeydown="fpassword(this) ">
+                    </center>
+                </div>
+                <div id="confirmPassword">
+                    <center>
+                        <input type="password" id="employeeConfirmPassword" placeholder="confirmPassword " onkeydown="fconfirmPassword(this) ">
+                    </center>
+                </div>
+                <div id="contact">
+                    <center>
+                        <input type="number" id="employeeContact" placeholder="contact " onkeydown="fcontact(this) ">
+                    </center>
+                </div>
+
+            </form>
+    </center>
+    </div>
+
+    <div id="addVehicle ">
+        <center>
+            <!-- heading to vehicle registration form-->
+
+            <!--vehicle registration form-->
+            <form>
+                <div id="company">
+                    <center>
+                        <input type="text" id="vehcileCompanyName " placeholder="vehicle company " onkeydown="fvehicleCompany(this) ">
+                    </center>
+                </div>
+                <div id="model">
+                    <center>
+                        <input type="text" id="vehicleModel " placeholder="vehicle Model " onkeydown="fvehicleModel(this) ">
+                    </center>
+                </div>
+                <div id="type">
+                    <center>
+                        <select id="vehicleType" onchange="fvehicleType(this) ">
+                            <option>select vehicle type</option>
+                        <option>Bicycle</option>
+                        <option>MotorCycle</option>
+                        <option>FourWheeler</option>
+                    </select></center>
+                </div>
+                <div id="number">
+                    <center>
+                        <input type="text" id="vehicleNumber " placeholder="vehicle Number " onkeydown="fvehicleNumber(this) ">
+                    </center>
+                </div>
+                <div id="id">
+                    <center>
+                        <input type="text" id="EmployeeId " placeholder="Employee Id " onkeydown="fid(this) ">
+                    </center>
+                </div>
+                <div id="identification">
+                    <center>
+                        <textarea id="vehicleIdentification" placeholder="vehicle identification " onkeydown="fvehicleIdentication(this) "></textarea>
+                    </center>
+                </div>
+
+            </form>
+        </center>
+    </div>
+    <!--heading of pricing -->
+
+    <div id="selectCurrency">
+        <center>
+            <select id="currency" onchange="currencyTypeChange(this)">
+				<option value="">
+				<option >INR</option>
+				<option  >USD</option>
+				<option >YEN</option>
+			</select>
+        </center>
+    </div>
+    <div id="selectPass">
+        <center>
+            <select onchange="passTypeChange(this)" id="passType">
+                <option value=""></option>
+				<option value="daily" id="dailyPass" >daily</option>
+				<option value="monthly" id="monthlyPass">monthly</option>
+                <option value="yearly" id="yearlyPass">yearly</option>
+            </select>
+        </center>
+    </div>
+    <div id="passCost"></div>
+    <div id="submitfinal">
+        <center>
+            <button onclick="successful()">Pay</button>
+
+        </center>
+    </div>
+
+</body>
+<script src="script.js">
+</script>
+
+</html>
