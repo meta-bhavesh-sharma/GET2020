@@ -20,6 +20,7 @@ body {
 	background-repeat: no-repeat !important;
 	background-attachment: fixed;
 }
+
 </style>
 </head>
 <body>
@@ -38,7 +39,7 @@ body {
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link " href="/signup">Sign
 						Up </a></li>
-				<li class="nav-item"><a class="nav-link " href="/userlogin">Login
+				<li class="nav-item"><a class="nav-link " href="/user">Login
 				</a></li>
 			</ul>
 		</div>

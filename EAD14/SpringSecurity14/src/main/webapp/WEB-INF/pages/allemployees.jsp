@@ -12,6 +12,7 @@
 			<th>Email</th>
 			<th>Contact</th>
 			<th>Organization</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,6 +25,8 @@
 				<td>${employee.email}</td>
 				<td>${employee.contact}</td>
 				<td>${employee.org}</td>
+				  <td><a href="/allemployees/${employee.id}" class="btn btn-primary">Edit</a> &nbsp;
+          <a href="/allemployees/delete/${employee.id}" class="btn btn-danger">Delete</a></td>
 			</tr>
 
 		</c:forEach>

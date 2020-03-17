@@ -1,12 +1,14 @@
 package com.metacube.training.model.commands;
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -25,7 +27,7 @@ public class EmployeeCommands {
 
 	@NotBlank
 	private String password;
-
+	
 	@Id
 	@Column(name="Rid")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -41,8 +43,30 @@ public class EmployeeCommands {
 	@Column(name="image")
 	private String path;
 	
-	@NotBlank
+	@Transient
 	private String confirmPassword;
+	
+	
+	String role = "USER";
+	
+	boolean active = true;
+	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
 	public String getPath() {
 		return path;

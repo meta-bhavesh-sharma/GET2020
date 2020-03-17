@@ -40,7 +40,7 @@ body {
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link " href="/employees">Friends</a>
 				</li>
-				<li class="nav-item"><a class="nav-link " href="/userlogout">Log
+				<li class="nav-item"><a class="nav-link " href="/logout">Log
 						Out</a></li>
 			</ul>
 		</div>

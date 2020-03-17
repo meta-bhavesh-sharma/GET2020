@@ -3,6 +3,9 @@ package com.metacube.training.model.commands;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class LoginCommands {
 
 	@NotNull

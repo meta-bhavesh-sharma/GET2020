@@ -18,9 +18,10 @@ public class UserData implements UserDetails
 	private boolean isActive;
 	private List<GrantedAuthority> authority;
 	
-	public UserData(UserCommands userCommands) {
+	public UserData(EmployeeCommands userCommands) {
 		this.isActive=userCommands.getActive();
 		System.out.println(isActive);
+		System.out.println("hello");
 		this.username = userCommands.getEmail();
 		this.password = userCommands.getPassword();
 		System.out.println(password);

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -48,13 +49,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional
 	public EmployeeCommands getEmpolyee(long id) {
 		 Optional<EmployeeCommands> opEmp = employeeRepository.findById(id);
-			 return opEmp.get();
+			 return (EmployeeCommands)opEmp.get();
 		 
 	}
 
 
 
 	@Override
+	@Modifying
 	@Transactional
 	public boolean updateEmployee(EmployeeCommands employeeCommands) {
 		employeeRepository.save(employeeCommands);
@@ -66,7 +68,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional
 	public List<EmployeeCommands> getAllEmployees(long id) {
 		Optional<EmployeeCommands> opEmp = employeeRepository.findById(id);
-		 return (List<EmployeeCommands>) opEmp.get();
+		String org=opEmp.get().getOrg();
+		 return employeeRepository.findByOrg(org);
 	}
 	
 	@Override
@@ -75,11 +78,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return (List<EmployeeCommands>)employeeRepository.findAll();
 	}
 
+	
+	@Override
+	public void deleteEmployee(long id) {
+		employeeRepository.deleteById(id);
+		
+	}
+
 	@Override
 	@Transactional
 	public long match(LoginCommands loginCommands) {
-		EmployeeCommands employeeCommands=employeeRepository.findByEmail(loginCommands.getEmail()).get(0);
-		return (long)employeeCommands.getId();
+		Optional<EmployeeCommands> employeeCommands=employeeRepository.findByEmail(loginCommands.getEmail());
+		if(employeeCommands.get().getPassword().equals(loginCommands.getPassword()))
+			return (long)employeeCommands.get().getId();
+		else
+			return -1;
 	}
 
 	@Override
@@ -118,10 +131,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	public String saveImage(EmployeeCommands empData,MultipartFile imageFile) throws IOException {
+		System.out.println("Saving the iamge");
 		String folder = "/Users/Bhavesh/Downloads/11-02-2020/Employee/src/main/resources/static/images/";
 		byte[] bytes = imageFile.getBytes();
 		Path path = Paths.get(folder + imageFile.getOriginalFilename());
 		Files.write(path, bytes);
+		System.out.println("emp data - "+empData.toString());
 		employeeRepository.save(empData);
 		return folder + imageFile.getOriginalFilename();
 	}

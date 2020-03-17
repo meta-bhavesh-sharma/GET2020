@@ -8,23 +8,26 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.metacube.training.model.commands.UserCommands;
+import com.metacube.training.model.commands.EmployeeCommands;
+
 import com.metacube.training.model.commands.UserData;
-import com.metacube.training.repository.UserRepo;
+import com.metacube.training.repository.EmployeeRepository;
+
 
 @Service
 public class UserServiceImpl implements UserDetailsService{
+	
 
 	@Autowired
-	private UserRepo userRepo;
+	private EmployeeRepository userRepo;
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-	
+		System.out.println("hello"+email+"anuj");
 		
-		Optional<UserCommands> userCommands = userRepo.findByEmail(email);
+		Optional<EmployeeCommands> userCommands = userRepo.findByEmail(email);
 		
-		userCommands.ifPresent(Employee -> {
+		userCommands.ifPresent(EmployeeCommands -> {
 		    System.out.println("User's is here ss = " + userCommands.get().getRole());   });
 		
 		userCommands.orElseThrow( () -> new UsernameNotFoundException( "Not found " + email));

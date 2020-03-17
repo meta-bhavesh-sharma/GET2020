@@ -41,7 +41,7 @@
 		System.out.println("Error: " + e);
 	}
 %>
-<form method="post" action="/upload" enctype="multipart/form-data">
+<form method="post" action="/setimage" enctype="multipart/form-data">
 
 	<input type="file" name="imageFile" accept="image/jpeg, image/png" />
 	<input type="submit" value="upload" />
@@ -76,21 +76,6 @@
 			value="Female" id="exampleInputGender1" />
 		Female
 		<form:errors path="name" cssClass="text-danger" />
-	</div>
-	<div class="form-group">
-		<form:label path="password">Password</form:label>
-		<form:input path="password" type="password" class="form-control"
-			id="exampleInputPassword1" placeholder="Password"
-			value="${Data.password}" readonly="true" />
-		<form:errors path="password" cssClass="text-danger" />
-	</div>
-	<div class="form-group">
-		<form:label path="confirmPassword">Confirm Password</form:label>
-		<form:input path="confirmPassword" type="password"
-			class="form-control" id="exampleInputPassword1"
-			placeholder="Confirm Password" value="${Data.password}"
-			readonly="true" />
-		<form:errors path="confirmPassword" cssClass="text-danger" />
 	</div>
 	<div class="form-group">
 		<form:label path="contact">Contact Number</form:label>

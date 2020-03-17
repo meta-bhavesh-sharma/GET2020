@@ -4,7 +4,7 @@
 <%@include file="../includes/header3.jsp"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-
+<h1>Plan Purchase</h1>
 <spring:url value="/plan" var="userActionUrl" />
 
 

@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@include file="../includes/Header1.jsp"%>
+<%@include file="../includes/header4.jsp"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<h1>Employee Registration</h1>
 <style>
 #exampleInputGender2, #exampleInputGender1 {
 	width: 1cm;
@@ -11,7 +10,7 @@
 	height: 30px;
 }
 </style>
-<spring:url value="/signup" var="userActionUrl" />
+<spring:url value="/update" var="userActionUrl" />
 
 
 <form:form modelAttribute="employee" action="${userActionUrl}">
@@ -70,7 +69,17 @@
 		</form:select>
 		<form:errors path="org" cssClass="text-danger" />
 	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-
+	<div class="form-group">
+		<form:label path="role">Role</form:label>
+		<form:select path="role" class="form-control" id="exampleInputOrg1">
+			<form:option value="--Select--" />
+			<form:option value="ADMIN" />
+			<form:option value="USER" />
+		</form:select>
+		<form:errors path="role" cssClass="text-danger" />
+	</div>
+	<div class="form-group">
+	<button type="submit" class="btn btn-primary">Add</button>
+	</div>
 </form:form>
 <%@include file="../includes/footer.jsp"%>

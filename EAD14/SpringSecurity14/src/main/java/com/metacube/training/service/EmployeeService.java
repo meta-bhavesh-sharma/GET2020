@@ -100,4 +100,10 @@ public interface EmployeeService {
 	 */
 	String getImage(long id);
 
+	/**
+	 * 
+	 * @param id
+	 */
+	void deleteEmployee(long id);
+
 }

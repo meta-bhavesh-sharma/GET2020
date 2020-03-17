@@ -8,6 +8,20 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="/lib/bootstrap-4.1.3-dist/css/bootstrap.min.css">
+	
+	<style>
+body {
+	background-image:
+		url("/images/carpark.jpg");
+	/*You will specify your image path here.*/
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: top center !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -27,6 +41,8 @@
 				</li>
 				<li class="nav-item"><a class="nav-link " href="/logout">Log
 						Out</a></li>
+				<li class="nav-item"><a class="nav-link " href="/addemployee">Add Employee
+						</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -3,14 +3,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@include file="../includes/header3.jsp"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<h1>Vehicle Registration</h1>
 <spring:url value="/vehicle" var="userActionUrl" />
 
 
 <form:form modelAttribute="vehicleData" action="${userActionUrl}">
 
 	<div class="form-group">
-		<form:label path="vehicleName">Name</form:label>
+		<form:label path="vehicleName">Vehicle Name</form:label>
 		<form:input path="vehicleName" type="text" class="form-control"
 			id="exampleInputvehicleName1" placeholder="Name" />
 		<form:errors path="vehicleName" cssClass="text-danger" />
@@ -28,7 +28,7 @@
 	<div class="form-group">
 		<form:label path="Eid">Employee id</form:label>
 		<form:input path="Eid" type="number" class="form-control"
-			id="exampleInputId1" placeholder="Employee Id" value='${Eid}'
+			id="exampleInputId1" placeholder="Employee Id" value="${Id}"
 			readonly="true" />
 		<form:errors path="Eid" cssClass="text-danger" />
 	</div>
