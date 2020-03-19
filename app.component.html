@@ -1,0 +1,229 @@
+<div class="nav border-bottom mx-5 mt-3 row font-weight-bold">
+    <span class="nav-link active col-10 text-primary mb-2 ">My Task Tracker</span>
+    <span class="col-2 "> <button class="btn btn-outline-primary text-dark mb-2 btn-md px-5" data-toggle="modal" data-target="#newTask">New Task</button></span>
+</div>
+<div class="container row mx-5 mt-2 d-flex justify-content-center text-center " style="height:250px">
+    <div class="card col-3 bg-light mx-3 ">
+        <p class="text-dark ">New</p>
+        <div style="display: {{display1}};" class=" text-left tasks text-white mt-3" *ngFor="let i of newtasksList">
+            <div class=" card bg-{{i.color}} " style="display: {{i.display}};">
+
+                <p class="font-weight-bold">
+                    {{i.title}}
+                </p>
+                <p>
+                    Description-{{i.description}}
+                </p>
+                <p>
+                    Creation Date:{{i.creationDate}}
+                </p>
+                <p>
+                    Completion Date:{{i.completionDate}}
+                </p>
+                <p>
+                    Priority :{{i.priority}}
+                </p>
+                <div class="row">
+                    <button class="btn btn-primary col-3 mb-3 ml-3" (click)="updateNew(i)" data-toggle="modal" data-target="#updateNewTask">Update </button>
+                    <button class="btn btn-primary col-4 mb-3 ml-1" (click)="ChangeToProgress(i)">Upgrade </button>
+                    <button class="btn btn-secondary col-3 mb-3 ml-1" (click)="delete(i)">Delete </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card col-3 bg-light mx-3 ">
+        <p>In Progress</p>
+        <div style="display: {{display3}};" class=" text-left  tasks m-0 text-white mt-3" *ngFor="let j of progresstasksList">
+            <div class=" card bg-{{j.color}} " style="display: {{j.display}};">
+
+                <p class="font-weight-bold ">
+                    {{j.title}}
+                </p>
+                <p>
+                    Description-{{j.description}}
+                </p>
+                <p>
+                    Creation Date:{{j.creationDate}}
+                </p>
+                <p>
+                    Completion Date:{{j.completionDate}}
+                </p>
+                <p>
+                    Priority :{{j.priority}}
+                </p>
+                <div class="row">
+                    <button class="btn btn-primary  col-3 mb-3 ml-3" (click)="updateProgress(j)" data-toggle="modal" data-target="#updateProgressTask">Update </button>
+                    <button class="btn btn-primary  col-4 mb-3 ml-1" (click)="ChangeToCompleted(j)">Upgrade </button>
+                    <button class="btn btn-secondary col-3 mb-3 ml-1" (click)="delete(j)">Delete </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card col-3 bg-light mx-3 ">
+        <p>Completed</p>
+        <div style="display: {{display2}};" class="  text-left tasks text-white  mt-3" *ngFor="let k of completetasksList">
+            <div class=" card bg-{{k.color}} " style="display: {{k.display}};">
+                <p class="font-weight-bold ">
+                    {{k.title}}
+                </p>
+                <p>
+                    Description-{{k.description}}
+                </p>
+                <p>
+                    Creation Date:{{k.creationDate}}
+                </p>
+                <p>
+                    Completion Date:{{k.completionDate}}
+                </p>
+                <p>
+                    Priority :{{k.priority}}
+                </p>
+                <button class="btn btn-secondary col-4 mb-3 ml-1" (click)="delete(k)">Delete </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade text-center" id="newTask" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-heading">Add Task</div>
+            <form class="form-group" id="addTaskForm">
+                <div class="modal-body mt-0">
+                    <span>Title</span>
+                    <span><input type="text" id="title" class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Description</span>
+                    <span><textarea  id="description" class="form-control"></textarea></span>
+                </div>
+                <div class="modal-body">
+                    <span>Status</span>
+                    <span>
+                  <select class="form-control" id="status">
+                      <option>New</option>
+                      <option>In Progress</option>
+                      <option>Completed</option>
+                  </select>
+              </span>
+                </div>
+                <div class="modal-body">
+                    <span>Creation Date</span>
+                    <span><input type="date" id="creationDate"  class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Completion Date</span>
+                    <span><input type="date" id="completionDate" class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Priority</span>
+                    <span>
+                             <select class="form-control" id="priority">
+                                 <option>High</option>
+                                 <option>Medium</option>
+                                 <option>Low</option>
+                            </select>
+                         </span>
+                </div>
+                <div class="modal-body">
+                    <span class=" mx-3">
+                            <input type="button" (click)="addTask()" data-dismiss="modal" value="Add">
+                            </span>
+                    <span class=" mx-3"> 
+                                <input type="reset" value="clear">
+                            </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade text-center" id="updateNewTask" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-heading">Add Task</div>
+            <form class="form-group" id="addTaskForm">
+                <div class="modal-body mt-0">
+                    <span>Title</span>
+                    <span><input type="text" id="updateNewTitle" class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Description</span>
+                    <span><textarea  id="updateNewDescription" class="form-control"></textarea></span>
+                </div>
+
+                <div class="modal-body">
+                    <span>Creation Date</span>
+                    <span><input type="date" id="updateNewStartDate"  class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Completion Date</span>
+                    <span><input type="date" id="updateNewEndDate" class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Priority</span>
+                    <span>
+                           <select class="form-control" id="updateNewPriority">
+                               <option>High</option>
+                               <option>Medium</option>
+                               <option>Low</option>
+                          </select>
+                       </span>
+                </div>
+
+                <div class="modal-body">
+                    <span class=" mx-3">
+                          <input type="button" (click)="updateNewTask()" data-dismiss="modal" value="update">
+                          </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade text-center" id="updateProgressTask" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-heading">Add Task</div>
+            <form class="form-group" id="addTaskForm">
+                <div class="modal-body mt-0">
+                    <span>Title</span>
+                    <span><input type="text" id="updateProgressTitle" class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Description</span>
+                    <span><textarea  id="updateProgressDescription" class="form-control"></textarea></span>
+                </div>
+
+                <div class="modal-body">
+                    <span>Creation Date</span>
+                    <span><input type="date" id="updateProgressStartDate"  class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Completion Date</span>
+                    <span><input type="date" id="updateProgressEndDate" class="form-control"></span>
+                </div>
+                <div class="modal-body">
+                    <span>Priority</span>
+                    <span>
+                           <select class="form-control" id="updateProgressPriority">
+                               <option>High</option>
+                               <option>Medium</option>
+                               <option>Low</option>
+                          </select>
+                       </span>
+                </div>
+                <div class="modal-body">
+                    <span class=" mx-3">
+                          <input type="button" (click)="updateProgressTask()" data-dismiss="modal" value="update">
+                          </span>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
