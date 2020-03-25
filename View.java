@@ -1,18 +1,41 @@
-package Evaluation;
-/**Main Method Containing Class
- * 
- * @author Bhavesh
- *
- */
+package Student;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
 public class View {
 	public static void main(String []args)
 	{
-		Stack stack=new Stack();
-		String infix=" 3 * ( 4 > 2 )";
-		String postFix=stack.toPostFix(infix);
-		System.out.println("post fix is "+postFix);
-		int evaluatedResult=stack.evaluatePostFix(postFix);	
-		System.out.println("Evaluation of infix is "+evaluatedResult);
+		ProgramAllocator programAllocator=new ProgramAllocator();
+		String csvFile = "C:\\Users\\Bhavesh\\workspace\\Stack\\src\\Student\\data.csv";
+        String line = "";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] data = line.split(",");
+
+                String[] preferences = new String[5];
+       
+                for(int i=0;i<preferences.length;i++)
+                {
+                	preferences[i]=data[i+1];
+                }
+                Student student=new Student(data[0],preferences);
+                programAllocator.enqueue(student);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+		Program programs[]=programAllocator.getPrograms();
+		programAllocator.allocateProgram(programs);
+
 	}
 
 }
